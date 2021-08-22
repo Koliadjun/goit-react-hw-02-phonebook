@@ -16,9 +16,17 @@ export class Phonebook extends Component {
     filter: '',
   };
   formSubmitHandler = data => {
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, data],
-    }));
+    const dataNameNormalized = data.name.toLowerCase();
+    const findItem = this.state.contacts.find(
+      contact => contact.name.toLowerCase() === dataNameNormalized,
+    );
+    if (findItem) {
+      alert(`${findItem.name} is already in contacts`);
+    } else {
+      this.setState(prevState => ({
+        contacts: [...prevState.contacts, data],
+      }));
+    }
   };
   listDeleteHandler = id => {
     this.setState({
