@@ -16,7 +16,6 @@ export class Phonebook extends Component {
     filter: '',
   };
   formSubmitHandler = data => {
-    console.log(data);
     this.setState(prevState => ({
       contacts: [...prevState.contacts, data],
     }));
@@ -25,18 +24,28 @@ export class Phonebook extends Component {
     this.setState({
       contacts: this.state.contacts.filter(item => id !== item.id),
     });
-    console.log(this.state.contacts);
+  };
+
+  onFilterChange = e => {
+    this.setState({
+      filter: e.currentTarget.value,
+    });
   };
 
   render() {
+    const { contacts, value } = this.state;
+    const normalizeFilter = this.state.filter.toLowerCase();
+    const filteredContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizeFilter),
+    );
     return (
       <>
         <h1>Phonebook</h1>
         <ContactForm onSubmitHandler={this.formSubmitHandler} />
         <h2>Contacts</h2>
-        <Filter />
+        <Filter value={value} onChange={this.onFilterChange} />
         <ContactList
-          contacts={this.state.contacts}
+          contacts={filteredContacts}
           onClick={this.listDeleteHandler}
         />
       </>

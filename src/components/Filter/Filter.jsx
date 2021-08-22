@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-export class Filter extends Component {
-  static propTypes = {};
-
-  render() {
-    return <div></div>;
-  }
-}
+const Filter = ({ value, onChange }) => {
+  return (
+    <label>
+      Find contacts by name
+      <input type="text" value={value} onChange={onChange} />
+    </label>
+  );
+};
 
 export default Filter;
