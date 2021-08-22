@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
 
+import s from './ContactForm.module.css';
 export class ContactForm extends Component {
   static propTypes = {
     onSubmitHandler: PropTypes.func.isRequired,
@@ -28,8 +29,11 @@ export class ContactForm extends Component {
   };
   render() {
     const { name, number } = this.state;
+    const InputNameId = shortid.generate();
+    const InputNumberId = shortid.generate();
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className={s.form} onSubmit={this.handleSubmit}>
+        <label htmlFor={InputNameId}>Name</label>
         <input
           type="text"
           name="name"
@@ -38,8 +42,11 @@ export class ContactForm extends Component {
           required
           value={name}
           onChange={this.handleInputChange}
+          id={InputNameId}
         />
+        <label htmlFor={InputNumberId}>Number</label>
         <input
+          id={InputNumberId}
           type="tel"
           name="number"
           //   pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import s from './ContactList.module.css';
+
 export class ContactList extends Component {
   static defaultProps = {
     contacts: [],
@@ -19,12 +21,15 @@ export class ContactList extends Component {
   render() {
     const contacts = this.props.contacts;
     return (
-      <ul>
+      <ul className={s.list}>
         {contacts.map(contact => (
-          <li key={contact.id}>
-            {contact.name}
-            <span>{contact.number}</span>
-            <button onClick={() => this.handleClick(contact.id)} type="button">
+          <li className={s.item} key={contact.id}>
+            {contact.name}:<span>{contact.number}</span>
+            <button
+              className={s.button}
+              onClick={() => this.handleClick(contact.id)}
+              type="button"
+            >
               delete
             </button>
           </li>

@@ -5,6 +5,10 @@
   align-items: center;
   justify-content: center;
   background-color: #ccc;
+  margin: 20px;
+}
+#root {
+  padding: 15px;
 }
 ul {
   list-style: none;

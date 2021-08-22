@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import s from './Phonebook.module.css';
+
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
@@ -48,9 +50,9 @@ export class Phonebook extends Component {
     );
     return (
       <>
-        <h1>Phonebook</h1>
+        <h1 className={s.title}>Phonebook</h1>
         <ContactForm onSubmitHandler={this.formSubmitHandler} />
-        <h2>Contacts</h2>
+        <h2 className={s.subTitle}>Contacts</h2>
         <Filter value={value} onChange={this.onFilterChange} />
         <ContactList
           contacts={filteredContacts}
