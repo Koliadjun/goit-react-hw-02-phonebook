@@ -9,7 +9,14 @@ export class ContactList extends Component {
   };
 
   static propTypes = {
-    contacts: PropTypes.array.isRequired,
+    contacts: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        number: PropTypes.string.isRequired,
+      }),
+      {},
+    ).isRequired,
     onClick: PropTypes.func.isRequired,
   };
 
