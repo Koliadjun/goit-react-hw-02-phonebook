@@ -1,6 +1,7 @@
 import React from 'react';
 import shortid from 'shortid';
 import s from './Filter.module.css';
+import PropTypes from 'prop-types';
 
 const Filter = ({ value, onChange }) => {
   const id = shortid.generate();
@@ -19,5 +20,8 @@ const Filter = ({ value, onChange }) => {
     </>
   );
 };
-
+Filter.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+};
 export default Filter;
